@@ -10,7 +10,7 @@ public class Plateau {
     private ArrayList<Trait> listeTraits;
     private ArrayList<Intersection> listeIntersection;
 
-    private Forme character;
+    private Character character;
     private int difficulte;
 
     public Plateau(int difficulte){

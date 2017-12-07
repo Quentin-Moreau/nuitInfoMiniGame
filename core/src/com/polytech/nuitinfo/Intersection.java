@@ -16,7 +16,7 @@ class Intersection {
         this.trait2 = trait2;
     }
 
-    private boolean checkIntersection(ArrayList<Intersection> listeIntersection){
+    /*private boolean checkIntersection(ArrayList<Intersection> listeIntersection, Character character){
         for(Intersection i: listeIntersection){
             if(i.isCrossed(position)){
                 character.setTrait(i.traitOppose(character.getTrait()));
@@ -26,7 +26,12 @@ class Intersection {
         return false;
     }
 
+    private Trait traitOppose(Trait t){
+        if(t.equals(trait1)){return trait2;}
+        if(t.equals(trait2)){return trait1;}
+    }
+
     private boolean isCrossed(int position){
 
-    }
+    }*/
 }
