@@ -1,4 +1,4 @@
-package com.polytech.nuitinfo;
+package com.polytech.nuitinfo.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
