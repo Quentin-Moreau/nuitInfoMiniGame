@@ -34,5 +34,9 @@ public class Plateau {
         return listeIntersectionsAPartirDe;
     }
 
+    public ArrayList<Intersection> getListeIntersections(){
+        return this.listeIntersections;
+    }
+
 
 }

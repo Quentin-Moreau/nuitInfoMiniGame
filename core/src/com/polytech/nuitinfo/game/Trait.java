@@ -15,7 +15,22 @@ class Trait {
 
     public ArrayList<Intersection> getListeIntersectionsAPartirDe(Plateau plateau, int positionFrom){
         //for ()
-        return null;
+        ArrayList<Intersection> fullList = plateau.getListeIntersections();
+        ArrayList<Intersection> sortedList = new ArrayList<Intersection>();
+        if(fullList.size() > 0){
+            for(Intersection i: fullList){
+                if(i.getPosition() < positionFrom && i.getTrait1().equals(this) || i.getTrait2().equals(this)){
+                    sortedList.add(i);
+                }
+            }
+        }
+        return sortedList;
+    }
+
+    public int getPositionX(){return positionX;}
+
+    public boolean equals(Trait t){
+        return this.positionX == t.getPositionX();
     }
 
 
