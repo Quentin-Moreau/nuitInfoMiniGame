@@ -21,9 +21,10 @@ class Character {
      * @param trait
      * @param forme
      */
-    public Character(Trait trait, String forme){
+    public Character(Trait trait, String forme, int vitesse){
         this.trait = trait;
         this.forme = forme;
+        this.vitesse = vitesse;
     }
 
     void setTrait(Trait trait){
@@ -33,10 +34,13 @@ class Character {
     /**
      * Fait tomber le personnage le long des traits verticaux
      */
-    void tomber(){
+    void update(Plateau plateau, float deltaTime){
         for(int i = 0; i < Trait.LONGUEUR; i++){
-            position++;
-            //if(position == Trait.getListeIntersectionsAPartirDe(position).get())
+            position += vitesse;
+            if(position == trait.getListeIntersectionsAPartirDe(plateau, position).get(0).getPosition()){
+                if (trait != trait.getListeIntersectionsAPartirDe(plateau, position).get(0).getTrait1()) setTrait(trait.getListeIntersectionsAPartirDe(plateau, position).get(0).getTrait1());
+                else setTrait(trait.getListeIntersectionsAPartirDe(plateau, position).get(0).getTrait2());
+            }
         }
     }
 
