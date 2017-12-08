@@ -39,6 +39,7 @@ public class PlayState extends State {
         handleInput();
         plateau.getSlowerCharacter().update(plateau, dt);
         isTheEnd();
+        plateau.checkIntersection();
     }
 
     @Override

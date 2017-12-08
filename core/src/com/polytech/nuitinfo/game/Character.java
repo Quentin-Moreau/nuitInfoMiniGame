@@ -24,12 +24,12 @@ public class Character {
      * @param trait
      * @param type
      */
-    public Character(Trait trait, String type, int vitesse){
+    public Character(Trait trait, String type, int vitesse, int position){
         this.trait = trait;
         this.type = type;
         this.characterSkin = new Texture("character.png");
         this.vitesse = new Vector2(0, vitesse);
-        this.position = (float) miniMain.HEIGHT-25;
+        this.position = position;
     }
 
     public void setTrait(Trait trait){
@@ -37,18 +37,21 @@ public class Character {
     }
 
     public float getPosition(){
-        return position;
+        return position+25;
     }
 
     public Vector2 getVitesse(){
         return vitesse;
     }
 
+    public Trait getTrait(){
+        return this.trait;
+    }
+
     /**
      * Fait tomber le personnage le long des traits verticaux
      */
     public void update(Plateau plateau, float deltaTime){
-        //for(int i = 0; i < Trait.LONGUEUR; i++){
         vitesse.scl(deltaTime);
         position -= vitesse.y;
         vitesse.scl(1 / deltaTime);
@@ -61,7 +64,6 @@ public class Character {
                     setTrait(trait.getListeIntersectionsAPartirDe(plateau, (int) position).get(0).getTrait2());
             }
         }
-        //}
     }
 
     public void render(SpriteBatch sb){

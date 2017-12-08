@@ -11,13 +11,15 @@ import java.util.ArrayList;
  */
 
 public class Trait {
-    public static final int LONGUEUR = 1000;
+    public static final int LONGUEUR = 750;
     private int positionX;
     private Texture texture;
+    private Character bottom;
 
-    public Trait(int positionX){
+    public Trait(int positionX, Character c){
         this.positionX = positionX;
         texture = new Texture("background.png");
+        bottom = c;
     }
 
     public ArrayList<Intersection> getListeIntersectionsAPartirDe(Plateau plateau, int positionFrom){
@@ -42,10 +44,12 @@ public class Trait {
 
     public void render(SpriteBatch sb){
         sb.begin();
-        sb.draw(texture, positionX-5, 0, 10, LONGUEUR);
+        sb.draw(texture, positionX-5, miniMain.HEIGHT-LONGUEUR, 10, LONGUEUR);
         sb.end();
     }
 
 
-
+    public void setCharacter(Character character) {
+        this.bottom = character;
+    }
 }

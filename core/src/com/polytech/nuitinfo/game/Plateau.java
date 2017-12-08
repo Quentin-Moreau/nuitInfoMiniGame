@@ -1,8 +1,10 @@
 package com.polytech.nuitinfo.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.polytech.nuitinfo.miniMain;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Barnabé on 12/7/2017.
@@ -19,10 +21,23 @@ public class Plateau {
         listCharacter = new ArrayList<Character>();
         listeIntersections = new ArrayList<Intersection>();
         listeTraits = new ArrayList<Trait>();
+        ArrayList<String> formes = new ArrayList<String>();
+        formes.add("carre");
+        formes.add("cercle");
+        formes.add("triangle");
+        //formes.add("etoile");
+        Random r = new Random();
         for(int i = 1; i < 4; i++){
-            listeTraits.add(new Trait(i*100));
+            listeTraits.add(new Trait(i*100, null));
         }
-        listCharacter.add(new Character(this.getFirstTrait(), "Carre", 100));
+
+        for(int i = 0; i < listeTraits.size(); i++){
+            int k = r.nextInt(formes.size());
+            String chosen = formes.get(k);
+            listeTraits.get(i).setCharacter(new Character(listeTraits.get(i), chosen, 0, listeTraits.get(i).LONGUEUR));
+        }
+
+        listCharacter.add(new Character(this.getFirstTrait(), "Carre", 100, miniMain.HEIGHT-25));
     }
 
     public Character getSlowerCharacter(){
@@ -51,6 +66,17 @@ public class Plateau {
 
     public ArrayList<Intersection> getListeIntersections(){
         return this.listeIntersections;
+    }
+
+    public void checkIntersection(){
+        for(Intersection i: listeIntersections){
+            if(i.getPosition()-listCharacter.get(0).getPosition() < 1 && i.getPosition()-listCharacter.get(0).getPosition() > -1){
+                if(i.contains(listCharacter.get(0).getTrait()) && !i.contains(listCharacter.get(0))){
+                    listCharacter.get(0).setTrait(i.oppositeTrait(listCharacter.get(0).getTrait()));
+                    i.addChar(listCharacter.get(0));
+                }
+            }
+        }
     }
 
     public void render(SpriteBatch sb){
