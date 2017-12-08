@@ -36,6 +36,10 @@ public class Trait {
         return sortedList;
     }
 
+    public Character getBottom(){
+        return bottom;
+    }
+
     public int getPositionX(){return positionX;}
 
     public boolean equals(Trait t){
@@ -46,6 +50,7 @@ public class Trait {
         sb.begin();
         sb.draw(texture, positionX-5, miniMain.HEIGHT-LONGUEUR, 10, LONGUEUR);
         sb.end();
+        bottom.render(sb);
     }
 
 

@@ -27,7 +27,11 @@ public class Character {
     public Character(Trait trait, String type, int vitesse, int position){
         this.trait = trait;
         this.type = type;
-        this.characterSkin = new Texture("character.png");
+        if(type.equals("player")){
+            this.characterSkin = new Texture(type + ".png");
+            this.type = "carre";
+        }
+        this.characterSkin = new Texture(type + ".png");
         this.vitesse = new Vector2(0, vitesse);
         this.position = position;
     }
@@ -50,6 +54,10 @@ public class Character {
 
     public Trait getTrait(){
         return this.trait;
+    }
+
+    public String getForm(){
+        return type;
     }
 
     /**

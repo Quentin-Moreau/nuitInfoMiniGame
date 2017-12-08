@@ -21,7 +21,7 @@ public class miniMain extends ApplicationAdapter {
     public void create () {
         gsm = new GameStateManager();
         batch = new SpriteBatch();
-        gsm.push(new MenuState(gsm));
+        gsm.push(new MenuState(gsm, 0));
         Gdx.gl.glClearColor(1, 0, 0, 1);
 
     }

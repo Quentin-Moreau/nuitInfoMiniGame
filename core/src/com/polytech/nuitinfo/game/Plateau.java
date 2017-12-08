@@ -14,12 +14,11 @@ public class Plateau {
     private ArrayList<Trait> listeTraits;
     private ArrayList<Intersection> listeIntersections;
 
-    private ArrayList<Character> listPlayableCharacters;
-    private ArrayList<Character> listCharactersToReach;
+    private ArrayList<Character> listCharacter;
     private int difficulte;
 
-    public Plateau(int difficulte){
-        listPlayableCharacters = new ArrayList<Character>();
+    public Plateau(int difficulte, int vitesse){
+        listCharacter = new ArrayList<Character>();
         listeIntersections = new ArrayList<Intersection>();
         listeTraits = new ArrayList<Trait>();
         ArrayList<String> formes = new ArrayList<String>();
@@ -31,39 +30,67 @@ public class Plateau {
         for(int i = 1; i < 4; i++){
             listeTraits.add(new Trait(i*100, null));
         }
-        listPlayableCharacters.add(new Character(this.getFirstTrait(), "Carre", 100));
 
         for(int i = 0; i < listeTraits.size(); i++){
             int k = r.nextInt(formes.size());
             String chosen = formes.get(k);
-            listeTraits.get(i).setCharacter(new Character(listeTraits.get(i), chosen, 0, listeTraits.get(i).LONGUEUR));
+            listeTraits.get(i).setCharacter(new Character(listeTraits.get(i), chosen, 0, miniMain.HEIGHT-listeTraits.get(i).LONGUEUR-25));
+            formes.remove(k);
         }
 
-        listPlayableCharacters.add(new Character(this.getFirstTrait(), "Carre", 100, miniMain.HEIGHT-25));
+        listCharacter.add(new Character(this.getFirstTrait(), "player", vitesse, miniMain.HEIGHT-25));
     }
 
     public Character getSlowerCharacter(){
-        Character slowerCharacter = listPlayableCharacters.get(0);
-        for(int i = 1; i < listPlayableCharacters.size(); i++){
-            if(listPlayableCharacters.get(i).getVitesse().y < slowerCharacter.getVitesse().y)
-                slowerCharacter = listPlayableCharacters.get(i);
+        Character slowerCharacter = listCharacter.get(0);
+        for(int i = 1; i < listCharacter.size(); i++){
+            if(listCharacter.get(i).getVitesse().y < slowerCharacter.getVitesse().y)
+                slowerCharacter = listCharacter.get(i);
         }
         return slowerCharacter;
+    }
+
+    /**
+     * Retourne la liste des intersections qui se trouvent en dessous de la position entrée en paramètre*
+     * @param positionFrom
+     * @return listeIntersectionsAPartirDe
+     */
+    public ArrayList<Intersection> getListeToutesIntersectionsAPartirDe(int positionFrom){
+        ArrayList<Intersection> listeIntersectionsAPartirDe = listeIntersections;
+        for(Intersection i: listeIntersections){
+            if (i.getPosition() < positionFrom) {
+                listeIntersectionsAPartirDe.remove(i);
+            }
+        }
+        return listeIntersectionsAPartirDe;
     }
 
     public ArrayList<Intersection> getListeIntersections(){
         return this.listeIntersections;
     }
 
+    public boolean canAddIntersection(){
+        return listeIntersections.size() < 3;
+    }
+
     public void checkIntersection(){
         for(Intersection i: listeIntersections){
-            if(i.getPosition()-listPlayableCharacters.get(0).getPosition() < 1 && i.getPosition()-listPlayableCharacters.get(0).getPosition() > -1){
-                if(i.contains(listPlayableCharacters.get(0).getTrait()) && !i.contains(listPlayableCharacters.get(0))){
-                    listPlayableCharacters.get(0).setTrait(i.oppositeTrait(listPlayableCharacters.get(0).getTrait()));
-                    i.addChar(listPlayableCharacters.get(0));
+            if(i.getPosition()-listCharacter.get(0).getPosition() < (listCharacter.get(0).getVitesse().y/100.0) && i.getPosition()-listCharacter.get(0).getPosition() > -(listCharacter.get(0).getVitesse().y/100.0)){
+                if(i.contains(listCharacter.get(0).getTrait()) && !i.contains(listCharacter.get(0))){
+                    listCharacter.get(0).setTrait(i.oppositeTrait(listCharacter.get(0).getTrait()));
+                    i.addChar(listCharacter.get(0));
                 }
             }
         }
+    }
+
+    public Trait checkFin(){
+        for(Trait t: listeTraits){
+            if(listCharacter.get(0).getPosition() <= t.getBottom().getPosition() && listCharacter.get(0).getTrait().getPositionX() == t.getPositionX()){
+                return t;
+            }
+        }
+        return null;
     }
 
     public void render(SpriteBatch sb){
@@ -108,4 +135,17 @@ public class Plateau {
         return fin;
     }
 
+    public boolean checkWin(Trait t) {
+        String s1 = t.getBottom().getForm();
+        String s2 = listCharacter.get(0).getForm();
+        boolean b1 = s1.equals(s2);
+        return b1;
+        //return t.getBottom().getForm().equals(listCharacter.get(0).getForm());
+        /*if(t.getBottom().getForm().equals(listCharacter.get(0).getForm())){
+            //System.out.println("prout");
+            return true;
+        }else{
+            return false;
+        }*/
+    }
 }
