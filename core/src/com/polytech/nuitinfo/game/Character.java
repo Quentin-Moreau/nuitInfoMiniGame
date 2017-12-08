@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Character {
     private Trait trait;
-    private String forme;
+    private String type;
     private Texture characterSkin;
     private float position;
     private Vector2 vitesse;
@@ -22,11 +22,11 @@ public class Character {
     /**
      * Constructeur
      * @param trait
-     * @param forme
+     * @param type
      */
-    public Character(Trait trait, String forme, int vitesse){
+    public Character(Trait trait, String type, int vitesse){
         this.trait = trait;
-        this.forme = forme;
+        this.type = type;
         this.characterSkin = new Texture("character.png");
         this.vitesse = new Vector2(0, vitesse);
         this.position = (float) miniMain.HEIGHT-25;
@@ -34,6 +34,14 @@ public class Character {
 
     public void setTrait(Trait trait){
         this.trait = trait;
+    }
+
+    public float getPosition(){
+        return position;
+    }
+
+    public Vector2 getVitesse(){
+        return vitesse;
     }
 
     /**
@@ -66,15 +74,7 @@ public class Character {
         return this.characterSkin;
     }
 
-    /*private boolean checkIntersection(ArrayList<Intersection> listeIntersection){
-        for(Intersection i: listeIntersection){
-            if(i.isCrossed(position)){
-                character.setTrait(i.traitOppose(character.getTrait()));
-                return true;
-            }
-        }
-        return false;
-    }*/
+
 
 
 }

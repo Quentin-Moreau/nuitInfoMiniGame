@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Created by Barnabé on 12/7/2017.
  */
 
-class Trait {
-    public static final int LONGUEUR = miniMain.HEIGHT;
+public class Trait {
+    public static final int LONGUEUR = 1000;
     private int positionX;
     private Texture texture;
 
@@ -21,7 +21,7 @@ class Trait {
     }
 
     public ArrayList<Intersection> getListeIntersectionsAPartirDe(Plateau plateau, int positionFrom){
-        //for ()
+
         ArrayList<Intersection> fullList = plateau.getListeIntersections();
         ArrayList<Intersection> sortedList = new ArrayList<Intersection>();
         if(fullList.size() > 0){

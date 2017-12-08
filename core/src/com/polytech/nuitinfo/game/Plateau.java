@@ -12,7 +12,7 @@ public class Plateau {
     private ArrayList<Trait> listeTraits;
     private ArrayList<Intersection> listeIntersections;
 
-    private Character character;
+    private ArrayList<Character> listCharacter;
     private int difficulte;
 
     public Plateau(int difficulte){
@@ -21,6 +21,15 @@ public class Plateau {
         for(int i = 1; i < 4; i++){
             listeTraits.add(new Trait(i*100));
         }
+    }
+
+    public Character getSlowerCharacter(){
+        Character slowerCharacter = listCharacter.get(0);
+        for(int i = 1; i < listCharacter.size(); i++){
+            if(listCharacter.get(i).getVitesse() < slowerCharacter.getVitesse())
+                slowerCharacter = listCharacter.get(i);
+        }
+        return slowerCharacter;
     }
 
     /**
