@@ -1,7 +1,10 @@
 package com.polytech.nuitinfo.States;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.polytech.nuitinfo.game.Plateau;
+import com.polytech.nuitinfo.game.Character;
 import com.polytech.nuitinfo.miniMain;
 
 /**
@@ -9,29 +12,33 @@ import com.polytech.nuitinfo.miniMain;
  */
 
 public class PlayState extends State {
-    private Texture character;
+    private Plateau plateau;
+    private Character character;
 
     protected PlayState(GameStateManager gsm) {
         super(gsm);
-        character = new Texture("character.png");
+        plateau = new Plateau(1);
+        character = new Character(plateau.getFirstTrait(), "Carre", 15);
         cam.setToOrtho(false, miniMain.WIDTH, miniMain.HEIGHT);
     }
 
     @Override
     protected void handleInput() {
-
+        if(Gdx.input.justTouched()){
+            plateau.addIntersection(Gdx.input.getY());
+        }
     }
 
     @Override
     public void update(float dt) {
-
+        character.update(plateau, dt);
     }
 
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
-        sb.begin();
-        sb.draw(character, 50, 50, 50, 50);
-        sb.end();
+        plateau.render(sb);
+        character.render(sb);
+
     }
 }

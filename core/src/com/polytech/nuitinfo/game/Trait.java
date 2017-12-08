@@ -1,5 +1,9 @@
 package com.polytech.nuitinfo.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.polytech.nuitinfo.miniMain;
+
 import java.util.ArrayList;
 
 /**
@@ -7,10 +11,13 @@ import java.util.ArrayList;
  */
 
 class Trait {
-    public static final int LONGUEUR = 1000;
+    public static final int LONGUEUR = miniMain.HEIGHT;
     private int positionX;
+    private Texture texture;
 
-    public Trait(){
+    public Trait(int positionX){
+        this.positionX = positionX;
+        texture = new Texture("background.png");
     }
 
     public ArrayList<Intersection> getListeIntersectionsAPartirDe(Plateau plateau, int positionFrom){
@@ -31,6 +38,12 @@ class Trait {
 
     public boolean equals(Trait t){
         return this.positionX == t.getPositionX();
+    }
+
+    public void render(SpriteBatch sb){
+        sb.begin();
+        sb.draw(texture, positionX-5, 0, 10, LONGUEUR);
+        sb.end();
     }
 
 

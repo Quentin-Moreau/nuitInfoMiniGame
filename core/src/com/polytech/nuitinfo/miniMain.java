@@ -1,4 +1,4 @@
-package com.polytech.nuitinfo.game;
+package com.polytech.nuitinfo;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -6,10 +6,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.polytech.nuitinfo.States.GameStateManager;
 import com.polytech.nuitinfo.States.MenuState;
+import com.polytech.nuitinfo.game.Plateau;
 
 public class miniMain extends ApplicationAdapter {
-    Plateau plateau;
-    public static final int WIDTH = 480;
+    private Plateau plateau;
+    public static final int WIDTH = 400;
     public static final int HEIGHT = 800;
     public static final String TITLE = "Game";
 
