@@ -14,11 +14,12 @@ public class Plateau {
     private ArrayList<Trait> listeTraits;
     private ArrayList<Intersection> listeIntersections;
 
-    private ArrayList<Character> listCharacter;
+    private ArrayList<Character> listPlayableCharacters;
+    private ArrayList<Character> listCharactersToReach;
     private int difficulte;
 
     public Plateau(int difficulte){
-        listCharacter = new ArrayList<Character>();
+        listPlayableCharacters = new ArrayList<Character>();
         listeIntersections = new ArrayList<Intersection>();
         listeTraits = new ArrayList<Trait>();
         ArrayList<String> formes = new ArrayList<String>();
@@ -30,6 +31,7 @@ public class Plateau {
         for(int i = 1; i < 4; i++){
             listeTraits.add(new Trait(i*100, null));
         }
+        listPlayableCharacters.add(new Character(this.getFirstTrait(), "Carre", 100));
 
         for(int i = 0; i < listeTraits.size(); i++){
             int k = r.nextInt(formes.size());
@@ -37,31 +39,16 @@ public class Plateau {
             listeTraits.get(i).setCharacter(new Character(listeTraits.get(i), chosen, 0, listeTraits.get(i).LONGUEUR));
         }
 
-        listCharacter.add(new Character(this.getFirstTrait(), "Carre", 100, miniMain.HEIGHT-25));
+        listPlayableCharacters.add(new Character(this.getFirstTrait(), "Carre", 100, miniMain.HEIGHT-25));
     }
 
     public Character getSlowerCharacter(){
-        Character slowerCharacter = listCharacter.get(0);
-        for(int i = 1; i < listCharacter.size(); i++){
-            if(listCharacter.get(i).getVitesse().y < slowerCharacter.getVitesse().y)
-                slowerCharacter = listCharacter.get(i);
+        Character slowerCharacter = listPlayableCharacters.get(0);
+        for(int i = 1; i < listPlayableCharacters.size(); i++){
+            if(listPlayableCharacters.get(i).getVitesse().y < slowerCharacter.getVitesse().y)
+                slowerCharacter = listPlayableCharacters.get(i);
         }
         return slowerCharacter;
-    }
-
-    /**
-     * Retourne la liste des intersections qui se trouvent en dessous de la position entrée en paramètre*
-     * @param positionFrom
-     * @return listeIntersectionsAPartirDe
-     */
-    public ArrayList<Intersection> getListeToutesIntersectionsAPartirDe(int positionFrom){
-        ArrayList<Intersection> listeIntersectionsAPartirDe = listeIntersections;
-        for(Intersection i: listeIntersections){
-            if (i.getPosition() < positionFrom) {
-                listeIntersectionsAPartirDe.remove(i);
-            }
-        }
-        return listeIntersectionsAPartirDe;
     }
 
     public ArrayList<Intersection> getListeIntersections(){
@@ -70,10 +57,10 @@ public class Plateau {
 
     public void checkIntersection(){
         for(Intersection i: listeIntersections){
-            if(i.getPosition()-listCharacter.get(0).getPosition() < 1 && i.getPosition()-listCharacter.get(0).getPosition() > -1){
-                if(i.contains(listCharacter.get(0).getTrait()) && !i.contains(listCharacter.get(0))){
-                    listCharacter.get(0).setTrait(i.oppositeTrait(listCharacter.get(0).getTrait()));
-                    i.addChar(listCharacter.get(0));
+            if(i.getPosition()-listPlayableCharacters.get(0).getPosition() < 1 && i.getPosition()-listPlayableCharacters.get(0).getPosition() > -1){
+                if(i.contains(listPlayableCharacters.get(0).getTrait()) && !i.contains(listPlayableCharacters.get(0))){
+                    listPlayableCharacters.get(0).setTrait(i.oppositeTrait(listPlayableCharacters.get(0).getTrait()));
+                    i.addChar(listPlayableCharacters.get(0));
                 }
             }
         }

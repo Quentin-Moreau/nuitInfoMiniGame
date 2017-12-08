@@ -9,6 +9,8 @@ import com.polytech.nuitinfo.game.Trait;
 import com.polytech.nuitinfo.miniMain;
 import com.polytech.nuitinfo.game.Character;
 
+import java.util.ArrayList;
+
 /**
  * Created by Barnabé on 12/7/2017.
  */
@@ -52,7 +54,6 @@ public class PlayState extends State {
 
     private boolean isTheEnd(){
         if(plateau.getSlowerCharacter().getPosition() <= 20){
-            gsm.set(new MenuState(gsm));
             return true;
         }
         return false;
@@ -60,7 +61,7 @@ public class PlayState extends State {
 
     public boolean doIWin(){
         if(isTheEnd()){
-
+            gsm.set(new EndGameState(gsm));
         }
         return false;
     }

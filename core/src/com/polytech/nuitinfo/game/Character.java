@@ -40,6 +40,10 @@ public class Character {
         return position+25;
     }
 
+    public void setPosition(float position){
+        this.position = position;
+    }
+
     public Vector2 getVitesse(){
         return vitesse;
     }
