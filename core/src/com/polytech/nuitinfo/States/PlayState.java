@@ -7,7 +7,7 @@ import com.polytech.nuitinfo.game.Plateau;
 import com.polytech.nuitinfo.game.Character;
 import com.polytech.nuitinfo.game.Trait;
 import com.polytech.nuitinfo.miniMain;
-import com.polytech.nuitinfo.game.Character;
+import com.polytech.nuitinfo.game.Intersection;
 
 /**
  * Created by Barnabé on 12/7/2017.
@@ -17,6 +17,8 @@ public class PlayState extends State {
     private Plateau plateau;
     private int score;
     private Texture back;
+    private Intersection intersectionCheck;
+    private int dist;
     //private Character character;
 
     public PlayState(GameStateManager gsm, int score, int vitesse) {
@@ -26,6 +28,8 @@ public class PlayState extends State {
         this.score = score;
         //character = new Character(plateau.getFirstTrait(), "Carre", 50);
         cam.setToOrtho(false, miniMain.WIDTH, miniMain.HEIGHT);
+        this.intersectionCheck = null;
+        dist = 0;
     }
 
     @Override
@@ -56,7 +60,19 @@ public class PlayState extends State {
             //gsm.set(new MenuState(gsm));
            // gsm.set(new MenuState(gsm));
         }
-        plateau.checkIntersection();
+        if(intersectionCheck == null) {
+            intersectionCheck = plateau.checkIntersection();
+        }else{
+            if(dist == 0)
+                dist = plateau.calculDist(intersectionCheck);
+            if(plateau.travelIntersection(intersectionCheck, dist)){
+                plateau.resetMove();
+                intersectionCheck = null;
+                dist = 0;
+            }
+        }
+            //intersectionCheck = plateau.checkIntersection();
+
     }
 
 

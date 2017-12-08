@@ -73,16 +73,46 @@ public class Plateau {
         return listeIntersections.size() < 3;
     }
 
-    public void checkIntersection(){
+    public Intersection checkIntersection(){
         for(Intersection i: listeIntersections){
             if(i.getPosition()-listCharacter.get(0).getPosition() < (listCharacter.get(0).getVitesse().y/100.0) && i.getPosition()-listCharacter.get(0).getPosition() > -(listCharacter.get(0).getVitesse().y/100.0)){
                 if(i.contains(listCharacter.get(0).getTrait()) && !i.contains(listCharacter.get(0))){
-                    listCharacter.get(0).setTrait(i.oppositeTrait(listCharacter.get(0).getTrait()));
+                    //listCharacter.get(0).setTrait(i.oppositeTrait(listCharacter.get(0).getTrait()));
                     i.addChar(listCharacter.get(0));
+                    return i;
                 }
             }
         }
+        return null;
     }
+
+    public boolean travelIntersection(Intersection i, int travel){
+        Character c = listCharacter.get(0);
+        if(travel < 0){
+            c.transition(1);
+        }else{
+            c.transition(-1);
+        }
+
+        float temp1 = i.oppositeTrait(c.getTrait()).getPositionX();
+        if(temp1 - c.getPositionY() < Math.abs(c.getVitesse().x)/100.0 && temp1 - c.getPositionY() > -(Math.abs(c.getVitesse().x)/100.0)){
+            c.setPositionY(i.oppositeTrait(c.getTrait()).getPositionX());
+            c.setTrait(i.oppositeTrait(c.getTrait()));
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public int calculDist(Intersection i){
+        Character c = listCharacter.get(0);
+        return c.getTrait().getPositionX()-i.oppositeTrait(c.getTrait()).getPositionX();
+    }
+
+    public void resetMove(){
+        listCharacter.get(0).resetTransition();
+    }
+
 
     public Trait checkFin(){
         for(Trait t: listeTraits){
@@ -126,7 +156,7 @@ public class Plateau {
                 maxIndex = i;
             }
         }
-        System.out.println(listeIntersections.size());
+        //System.out.println(listeIntersections.size());
 
         if(maxIndex >= 0){
             temp.remove(maxIndex);

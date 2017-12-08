@@ -6,10 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.polytech.nuitinfo.States.GameStateManager;
 import com.polytech.nuitinfo.States.MenuState;
-import com.polytech.nuitinfo.game.Plateau;
 
 public class miniMain extends ApplicationAdapter {
-    private Plateau plateau;
     public static final int WIDTH = 400;
     public static final int HEIGHT = 800;
     public static final String TITLE = "Game";

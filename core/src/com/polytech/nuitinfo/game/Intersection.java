@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by Barnabé on 12/7/2017.
  */
 
-class Intersection {
+public class Intersection {
     private Trait trait1;
     private Trait trait2;
     private int position;
