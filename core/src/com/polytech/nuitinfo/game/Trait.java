@@ -11,14 +11,14 @@ import java.util.ArrayList;
  */
 
 public class Trait {
-    public static final int LONGUEUR = 750;
+    public static final int LONGUEUR = 760;
     private int positionX;
     private Texture texture;
     private Character bottom;
 
     public Trait(int positionX, Character c){
         this.positionX = positionX;
-        texture = new Texture("background.png");
+        texture = new Texture("trait.png");
         bottom = c;
     }
 

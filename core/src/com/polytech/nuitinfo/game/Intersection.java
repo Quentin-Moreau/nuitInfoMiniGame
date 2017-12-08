@@ -20,7 +20,7 @@ public class Intersection {
         this.trait1 = trait1;
         this.trait2 = trait2;
         this.position = position;
-        this.texture = new Texture("background.png");
+        this.texture = new Texture("travel.png");
         crossed = new ArrayList<Character>();
     }
 

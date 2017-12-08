@@ -19,12 +19,14 @@ public class PlayState extends State {
     private Texture back;
     private Intersection intersectionCheck;
     private int dist;
+    private Texture bottom;
     //private Character character;
 
     public PlayState(GameStateManager gsm, int score, int vitesse) {
         super(gsm);
         plateau = new Plateau(1, vitesse);
-        back = new Texture("road.png");
+        back = new Texture("route.png");
+        bottom = new Texture("bottom.png");
         this.score = score;
         //character = new Character(plateau.getFirstTrait(), "Carre", 50);
         cam.setToOrtho(false, miniMain.WIDTH, miniMain.HEIGHT);
@@ -56,6 +58,7 @@ public class PlayState extends State {
                 //reset();
             }else{
                 gsm.set(new MenuState(gsm, score));
+                dispose();
             }
             //gsm.set(new MenuState(gsm));
            // gsm.set(new MenuState(gsm));
@@ -75,12 +78,24 @@ public class PlayState extends State {
 
     }
 
+    public void dispose(){
+        back.dispose();
+        bottom.dispose();
+    }
+
 
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
-        sb.draw(back, 0, 0, miniMain.WIDTH, miniMain.HEIGHT);
+        int pos = 0;
+        int size =  plateau.getListeTraits().size();
+        for(int i = 0; i <= size; i++){
+            sb.draw(back, pos, 0, miniMain.WIDTH/(size+1), miniMain.HEIGHT);
+            pos += 100;
+        }
+        sb.draw(bottom, 0, 0, miniMain.WIDTH, miniMain.HEIGHT-plateau.getListeTraits().get(0).LONGUEUR);
+        //sb.draw(back, 0, 0, miniMain.WIDTH, miniMain.HEIGHT);
         sb.end();
         plateau.render(sb);
         plateau.getSlowerCharacter().render(sb);

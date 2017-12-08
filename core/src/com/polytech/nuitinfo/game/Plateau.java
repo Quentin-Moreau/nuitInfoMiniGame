@@ -41,6 +41,10 @@ public class Plateau {
         listCharacter.add(new Character(this.getRandomTrait(), "player", vitesse, miniMain.HEIGHT-25));
     }
 
+    public ArrayList<Trait> getListeTraits(){
+        return this.listeTraits;
+    }
+
     public Character getSlowerCharacter(){
         Character slowerCharacter = listCharacter.get(0);
         for(int i = 1; i < listCharacter.size(); i++){
