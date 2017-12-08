@@ -36,9 +36,17 @@ class Intersection {
         return trait2;
     }
 
+    private Trait lowerTrait(){
+        if(trait1.getPositionX() < trait2.getPositionX()){
+            return trait1;
+        }else{
+            return trait2;
+        }
+    }
+
     public void render(SpriteBatch sb){
         sb.begin();
-        sb.draw(texture, Math.abs(trait1.getPositionX()-trait2.getPositionX())-50, position, 100, 10);
+        sb.draw(texture, lowerTrait().getPositionX(), position, 100, 10);
         sb.end();
     }
 

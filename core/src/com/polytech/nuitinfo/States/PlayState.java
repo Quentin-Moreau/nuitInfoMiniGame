@@ -15,12 +15,12 @@ import com.polytech.nuitinfo.game.Character;
 
 public class PlayState extends State {
     private Plateau plateau;
-    private Character character;
+    //private Character character;
 
     protected PlayState(GameStateManager gsm) {
         super(gsm);
         plateau = new Plateau(1);
-        character = new Character(plateau.getFirstTrait(), "Carre", 15);
+        //character = new Character(plateau.getFirstTrait(), "Carre", 50);
         cam.setToOrtho(false, miniMain.WIDTH, miniMain.HEIGHT);
     }
 
@@ -37,19 +37,20 @@ public class PlayState extends State {
     @Override
     public void update(float dt) {
         handleInput();
-        character.update(plateau, dt);
+        plateau.getSlowerCharacter().update(plateau, dt);
+        isTheEnd();
     }
 
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         plateau.render(sb);
-        character.render(sb);
+        plateau.getSlowerCharacter().render(sb);
 
     }
 
-    private boolean isTheEnd(Plateau plateau){
-        if(plateau.getSlowerCharacter().getPosition() == Trait.LONGUEUR){
+    private boolean isTheEnd(){
+        if(plateau.getSlowerCharacter().getPosition() <= 20){
             gsm.set(new MenuState(gsm));
             return true;
         }
@@ -57,7 +58,7 @@ public class PlayState extends State {
     }
 
     public boolean doIWin(){
-        if(isTheEnd(plateau)){
+        if(isTheEnd()){
 
         }
         return false;

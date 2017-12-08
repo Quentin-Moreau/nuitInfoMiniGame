@@ -16,11 +16,13 @@ public class Plateau {
     private int difficulte;
 
     public Plateau(int difficulte){
+        listCharacter = new ArrayList<Character>();
         listeIntersections = new ArrayList<Intersection>();
         listeTraits = new ArrayList<Trait>();
         for(int i = 1; i < 4; i++){
             listeTraits.add(new Trait(i*100));
         }
+        listCharacter.add(new Character(this.getFirstTrait(), "Carre", 100));
     }
 
     public Character getSlowerCharacter(){
@@ -86,7 +88,7 @@ public class Plateau {
         }
         System.out.println(listeIntersections.size());
 
-        if(maxIndex > 0){
+        if(maxIndex >= 0){
             temp.remove(maxIndex);
         }
         Trait[] fin = {temp.get(0), temp.get(1)};
