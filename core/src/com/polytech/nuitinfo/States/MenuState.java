@@ -24,7 +24,8 @@ public class MenuState extends State{
         cam.setToOrtho(false, miniMain.WIDTH, miniMain.HEIGHT);
         background = new Texture("menu.png");
         font = new BitmapFont();
-        font.setColor(Color.BLACK);
+        font.setColor(Color.WHITE);
+
     }
 
     @Override
@@ -46,14 +47,16 @@ public class MenuState extends State{
         sb.begin();
 
         sb.draw(this.background, 0, 0, miniMain.WIDTH, miniMain.HEIGHT);
-        sb.draw(this.pb, miniMain.WIDTH/2-50, miniMain.HEIGHT/2-250, 100, 100);
-        font.draw(sb, "Vous ne pouvez déplacer Barnabéus que trois fois.", 0, miniMain.HEIGHT/2-100);
-        font.draw(sb, "Votre score: "+ score, miniMain.WIDTH/2-50, miniMain.HEIGHT/2-300);
+        sb.draw(this.pb, miniMain.WIDTH/2-100, miniMain.HEIGHT-miniMain.HEIGHT/4, 200, 100);
+        font.draw(sb, "Barnabéus a trop bu... Aidez-le à rentrer chez lui !", 50, miniMain.HEIGHT/4);
+        font.draw(sb, "Vous ne pouvez déplacer Barnabéus que trois fois.", 50, miniMain.HEIGHT/4-20);
+        font.draw(sb, "Votre score: "+ score, miniMain.WIDTH/2-50, miniMain.HEIGHT/4-100);
         sb.end();
     }
 
     public void dispose(){
         background.dispose();
+        font.dispose();
         pb.dispose();
     }
 }

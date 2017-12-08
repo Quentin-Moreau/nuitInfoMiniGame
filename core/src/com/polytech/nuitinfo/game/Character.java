@@ -19,6 +19,7 @@ public class Character {
     private float positionY;
     private Vector2 storedSpeed;
     private Vector2 vitesse;
+    private int size = 100;
 
     /**
      * Constructeur
@@ -29,6 +30,7 @@ public class Character {
         this.trait = trait;
         this.type = type;
         if(type.equals("player")){
+            this.size = 50;
             this.characterSkin = new Texture(type + ".png");
             this.type = "carre";
         }
@@ -44,7 +46,7 @@ public class Character {
     }
 
     public float getPosition(){
-        return position+25;
+        return position+(size/2);
     }
 
     public void setPosition(float position){
@@ -99,7 +101,7 @@ public class Character {
 
     public void render(SpriteBatch sb){
         sb.begin();
-        sb.draw(this.characterSkin, positionY-25, position, 50, 50);
+        sb.draw(this.characterSkin, positionY-(size/2), position, size, size);
         sb.end();
     }
 

@@ -38,7 +38,7 @@ public class Plateau {
             formes.remove(k);
         }
 
-        listCharacter.add(new Character(this.getFirstTrait(), "player", vitesse, miniMain.HEIGHT-25));
+        listCharacter.add(new Character(this.getRandomTrait(), "player", vitesse, miniMain.HEIGHT-25));
     }
 
     public Character getSlowerCharacter(){
@@ -137,6 +137,14 @@ public class Plateau {
         return listeTraits.get(0);
     }
 
+    public Trait getRandomTrait(){
+        Random r = new Random();
+        if(listeTraits.size()>0) {
+            int k = r.nextInt(listeTraits.size());
+            return listeTraits.get(k);
+        }
+        return null;
+    }
     public void addIntersection(int x, int y) {
         Trait[] temp = getCloserTraits(x);
         this.listeIntersections.add(new Intersection(temp[0], temp[1], y));
