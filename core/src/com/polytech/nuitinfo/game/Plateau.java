@@ -26,7 +26,7 @@ public class Plateau {
     public Character getSlowerCharacter(){
         Character slowerCharacter = listCharacter.get(0);
         for(int i = 1; i < listCharacter.size(); i++){
-            if(listCharacter.get(i).getVitesse() < slowerCharacter.getVitesse())
+            if(listCharacter.get(i).getVitesse().y < slowerCharacter.getVitesse().y)
                 slowerCharacter = listCharacter.get(i);
         }
         return slowerCharacter;
@@ -52,8 +52,12 @@ public class Plateau {
     }
 
     public void render(SpriteBatch sb){
+        //System.out.println(listeIntersections.size());
         for(Trait t: listeTraits){
             t.render(sb);
+        }
+        for(Intersection i: listeIntersections){
+            i.render(sb);
         }
     }
 
@@ -68,13 +72,25 @@ public class Plateau {
 
     public Trait[] getCloserTraits(int positionX){
         ArrayList<Integer> distances = new ArrayList<Integer>();
-        for(int i = 0; i < listeTraits.size(); i++){
+        ArrayList<Trait> temp = new ArrayList<Trait>(listeTraits);
+        for(int i = 0; i < temp.size(); i++){
             distances.add(Math.abs(listeTraits.get(i).getPositionX()-positionX));
         }
-        /*for(int i = 0; i < distances.size(); i++){
-            if()
-        }*/
-        return null;
+        int max = -100;
+        int maxIndex = -10;
+        for(int i = 0; i < distances.size(); i++){
+            if(distances.get(i) > max){
+                max = distances.get(i);
+                maxIndex = i;
+            }
+        }
+        System.out.println(listeIntersections.size());
+
+        if(maxIndex > 0){
+            temp.remove(maxIndex);
+        }
+        Trait[] fin = {temp.get(0), temp.get(1)};
+        return fin;
     }
 
 }

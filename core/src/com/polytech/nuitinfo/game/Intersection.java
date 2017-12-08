@@ -1,5 +1,8 @@
 package com.polytech.nuitinfo.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import java.util.ArrayList;
 
 /**
@@ -10,10 +13,13 @@ class Intersection {
     private Trait trait1;
     private Trait trait2;
     private int position;
+    private Texture texture;
 
     public Intersection(Trait trait1, Trait trait2, int position) {
         this.trait1 = trait1;
         this.trait2 = trait2;
+        this.position = position;
+        this.texture = new Texture("background.png");
     }
 
     //TODO Interdir la création d'intersections au dessus de la position de la dernière intersection posée
@@ -29,4 +35,11 @@ class Intersection {
     Trait getTrait2() {
         return trait2;
     }
+
+    public void render(SpriteBatch sb){
+        sb.begin();
+        sb.draw(texture, Math.abs(trait1.getPositionX()-trait2.getPositionX())-50, position, 100, 10);
+        sb.end();
+    }
+
 }

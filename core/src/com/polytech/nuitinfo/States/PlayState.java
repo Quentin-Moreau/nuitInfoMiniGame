@@ -25,14 +25,18 @@ public class PlayState extends State {
     }
 
     @Override
-    protected void handleInput() {
+    public void handleInput() {
         if(Gdx.input.justTouched()){
-            plateau.addIntersection(Gdx.input.getY());
+            int x = Gdx.input.getX()*miniMain.WIDTH/Gdx.graphics.getWidth();
+            int y = miniMain.HEIGHT-(Gdx.input.getY()*miniMain.HEIGHT/Gdx.graphics.getHeight());
+            System.out.println("" + x + ", " + y);
+            plateau.addIntersection(x, y);
         }
     }
 
     @Override
     public void update(float dt) {
+        handleInput();
         character.update(plateau, dt);
     }
 
