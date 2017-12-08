@@ -63,6 +63,10 @@ public class PlayState extends State {
             //gsm.set(new MenuState(gsm));
            // gsm.set(new MenuState(gsm));
         }
+        if(plateau.checkEnemy()){
+            gsm.set(new MenuState(gsm, score));
+            dispose();
+        }
         if(intersectionCheck == null) {
             intersectionCheck = plateau.checkIntersection();
         }else{

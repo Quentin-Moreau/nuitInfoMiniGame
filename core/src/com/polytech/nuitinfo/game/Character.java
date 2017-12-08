@@ -34,7 +34,13 @@ public class Character {
             this.characterSkin = new Texture(type + ".png");
             this.type = "carre";
         }
-        this.characterSkin = new Texture(type + ".png");
+        if(type.equals("policeman")){
+            this.size=50;
+            this.type = "cercle";
+            this.characterSkin = new Texture(this.type + ".png");
+        }else {
+            this.characterSkin = new Texture(type + ".png");
+        }
         this.storedSpeed = new Vector2(0, vitesse);
         this.vitesse = new Vector2(0, vitesse);
         this.position = position;

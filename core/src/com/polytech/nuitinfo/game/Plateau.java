@@ -15,10 +15,12 @@ public class Plateau {
     private ArrayList<Intersection> listeIntersections;
 
     private ArrayList<Character> listCharacter;
+    private ArrayList<Character> enemyList;
     private int difficulte;
 
     public Plateau(int difficulte, int vitesse){
         listCharacter = new ArrayList<Character>();
+        enemyList = new ArrayList<Character>();
         listeIntersections = new ArrayList<Intersection>();
         listeTraits = new ArrayList<Trait>();
         ArrayList<String> formes = new ArrayList<String>();
@@ -29,6 +31,11 @@ public class Plateau {
         Random r = new Random();
         for(int i = 1; i < 4; i++){
             listeTraits.add(new Trait(i*100, null));
+        }
+
+        for(int i = 0; i < listeTraits.size()/3; i++){
+            int hauteur = miniMain.HEIGHT/8 + r.nextInt(miniMain.HEIGHT/2 - miniMain.HEIGHT/8);
+            enemyList.add(new Character(getRandomTrait(), "policeman", 0, hauteur));
         }
 
         for(int i = 0; i < listeTraits.size(); i++){
@@ -124,7 +131,20 @@ public class Plateau {
                 return t;
             }
         }
+
         return null;
+    }
+
+    public boolean checkEnemy(){
+        Character player = listCharacter.get(0);
+        for(Character c: enemyList){
+            if(player.getTrait().equals(c.getTrait())) {
+                if (player.getPosition() < c.getPosition() + player.getVitesse().y / 100 && player.getPosition() > c.getPosition() - player.getVitesse().y / 100) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void render(SpriteBatch sb){
@@ -134,6 +154,9 @@ public class Plateau {
         }
         for(Intersection i: listeIntersections){
             i.render(sb);
+        }
+        for(Character c: enemyList){
+            c.render(sb);
         }
     }
 
