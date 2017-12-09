@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,7 +36,11 @@ public class FirstScreen extends AppCompatActivity {
     }
     public static void incrKonomicon(String key){
         int tmp=0;
-        tmp=FirstScreen.konomikon.getOrDefault(key,0)+1;
+        //tmp=FirstScreen.konomikon.getOrDefault(key,0)+1;
+        if(FirstScreen.konomikon.containsKey(key))
+            tmp = FirstScreen.konomikon.get(key)+1;
+        else
+            tmp = FirstScreen.konomikon.get(0)+1;
         FirstScreen.konomikon.put(key,tmp);
     }
 
@@ -68,37 +74,62 @@ public class FirstScreen extends AppCompatActivity {
                         if (Math.abs(deltaX) > 0 || Math.abs(deltaY) > 0)
                         {
                             HashMap<String,Integer> map = FirstScreen.getKonomicon();
+                            //////////////////////////////////
+                            int one, two;
+                            if(map.containsKey("HAUT"))
+                                one = map.get("HAUT");
+                            else
+                                one = map.get(0);
 
-                            if(deltaX>deltaY && (map.getOrDefault("HAUT",0)==2 && map.getOrDefault("BAS",0)==2)){ //horizontal
+                            if(map.containsKey("BAS"))
+                                two = map.get("BAS");
+                            else
+                                two = map.get(0);
+
+                            ///////////////////////////////
+                            int three, four;
+                            if(map.containsKey("GAUCHE"))
+                                three = map.get("GAUCHE");
+                            else
+                                three = map.get(0);
+
+                            if(map.containsKey("DROITE"))
+                                four = map.get("DROITE");
+                            else
+                                four = map.get(0);
+                            //////////////////////////////////
+                            ///////////////////////////////////
+                            //if(deltaX >deltaY && (map.getOrDefault("HAUT",0)==2 && map.getOrDefault("BAS",0)==2)){ //horizontal
+                            if(deltaX >deltaY && (one==2 && two==2)){
                                 if(x2>x1){ //left to right
 
-                                    if(map.getOrDefault("GAUCHE",0)==2 && map.getOrDefault("DROITE",0)==1){ //Konomikon completed
+                                    if(three==2 && four==1){
+                                        //if(map.getOrDefault("GAUCHE",0)==2 && map.getOrDefault("DROITE",0)==1){ //Konomikon completed
                                         //TODO : Hack Mode
                                         Toast toast=Toast.makeText(getApplicationContext(),"Konomicon !",Toast.LENGTH_LONG);
                                         toast.show();
 
                                         FirstScreen.resetKonomicon();
-                                    }else if(map.getOrDefault("GAUCHE",0)==1 && map.getOrDefault("DROITE",0)==0){ //Ok
+                                    }else if(three==1 && four==0){ //Ok
                                         FirstScreen.incrKonomicon("DROITE");
                                     }else{
                                         FirstScreen.resetKonomicon();
                                     }
 
-                                }else{ //right to left
-
-                                    if((map.getOrDefault("GAUCHE",0)==0 && map.getOrDefault("DROITE",0)==0) ||
-                                            (map.getOrDefault("GAUCHE",0)==1 && map.getOrDefault("DROITE",0)==1)){ //ok
+                                }else{//right to left
+                                    if((three==0 && four==0) ||
+                                            (three==1 && four==1)){ //ok
                                         FirstScreen.incrKonomicon("GAUCHE");
                                     }else{
                                         FirstScreen.resetKonomicon();
                                     }
                                 }
 
-                            }else if(deltaY>deltaX && (map.getOrDefault("DROITE",0)==0 && map.getOrDefault("GAUCHE",0)==0)){ //vertical
+                            }else if(deltaY>deltaX && (four==0 && three==0)){ //vertical
                                 if(y2>y1){ //up
 
-                                    if((map.getOrDefault("HAUT",0)==0 && map.getOrDefault("BAS",0)==0) ||
-                                            (map.getOrDefault("HAUT",0)==1 && map.getOrDefault("BAS",0)==0)){ //ok
+                                    if((one==0 && two==0) ||
+                                            (one==1 && two==0)){ //ok
                                         FirstScreen.incrKonomicon("HAUT");
                                     }else{
                                         FirstScreen.resetKonomicon();
@@ -106,8 +137,8 @@ public class FirstScreen extends AppCompatActivity {
 
                                 }else{ //down
 
-                                    if((map.getOrDefault("HAUT",0)==2 && map.getOrDefault("BAS",0)==0) ||
-                                            (map.getOrDefault("HAUT",0)==2 && map.getOrDefault("BAS",0)==1)){ //ok
+                                    if((one==2 && two==0) ||
+                                            (one==2 && two==1)){ //ok
                                         FirstScreen.incrKonomicon("BAS");
                                     }else{
                                         FirstScreen.resetKonomicon();

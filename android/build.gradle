@@ -27,7 +27,7 @@ android {
     }
     defaultConfig {
         applicationId "com.polytech.nuitinfo"
-        minSdkVersion 25
+        minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
