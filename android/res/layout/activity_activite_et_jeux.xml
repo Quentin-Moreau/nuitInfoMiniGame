@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.polytech.nuitdelinfo.iiioexception.com.polytech.nuitinfo.ActiviteEtJeux">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Activité et Jeux" />
+
+    <Button
+        android:id="@+id/quizz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="69dp"
+        android:text="Quizz" />
+
+    <Button
+        android:id="@+id/ethyloJeu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quizz"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:text="Ethylojeu" />
+
+    <Button
+        android:id="@+id/bonChemin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ethyloJeu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:text="Le Bon Chemin" />
+</RelativeLayout>

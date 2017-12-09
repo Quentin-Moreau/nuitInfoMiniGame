@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--..............................................................................................................................
+  . Copyright (c)
+  .
+  . The child_layout.xml	 Class was Coded by : Alexandre BOLOT
+  .
+  . Last Modified : 12/07/17 19:19
+  .
+  . Contact : bolotalex06@gmail.com
+  .............................................................................................................................-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/txtChild"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="16sp"/>
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_tips_et_cours"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp"
+    android:orientation="vertical"
+    tools:context="com.polytech.nuitdelinfo.iiioexception.com.polytech.nuitinfo.TipsEtCours">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/btn_star"
+        android:id="@+id/backTips"
+        />
+
+    <TextView
+        android:id="@+id/tittleTips"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Tips et Cours"
+        android:textAlignment="center" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cours"
+        android:background="#d6d7d7"
+        android:divider="@android:color/background_dark"
+        android:dividerHeight="3dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp" />
+
+
+</LinearLayout>

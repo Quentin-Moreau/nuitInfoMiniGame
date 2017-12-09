@@ -1,0 +1,40 @@
+<resources>
+    <string-array name="Headers">
+        <item>[15:00] - Association Pilotes Policier Gendarmes</item>
+        <item>[07/12] - Sécurité routière (Août)</item>
+        <item>[05/10] - Maquillage et nourriture au volant</item>
+        <item>[01/10] - Le GPS : nouvel outil des collectivités</item>
+        <item>[23/09] - Comment réduire la mortalité routière ?</item>
+        <item>[12/09] - Au Japon, vieillir ou conduire, il faut choisir !</item>
+        <item>[28/08] - Casque obligatoire</item>
+    </string-array>
+
+    <string-array name="Content">
+        <item>L\u0027Association des Pilotes Policiers et Gendarmes demande aux futures ingénieurs de France
+        de leur proposer une application de prévention routière pour mieux lutter contre les conduites à risque.\n</item>
+
+        <item>Le nombre de morts sur les routes baisse de 1,7 % en août.\n</item>
+
+        <item>Non, il n’est pas interdit de se maquiller ou de manger en voiture depuis le 1er juillet 11.\n</item>
+
+        <item>Partout s’impose petit à petit l’idée que l’utilisation des données collectées par les voitures
+            connectées sur les trajets automobiles pourrait être utile à la collectivité.
+            \nLe but serait de connaître précisément les fréquentations et ainsi améliorer efficacement le
+            réseau routier des villes et réduire les bouchons chroniques.\n
+        </item>
+
+        <item>Alcool, téléphone portable, assoupissement, vitesse… Les raisons invoquées lors des accidents sont bien connues.
+            Pourtant, le nombre de morts sur les routes augmente depuis trois ans. Alors que faire ?
+            \n\nProposez vos idées créatives avec le #StopAccident !\n
+        </item>
+
+        <item>Face à la recrudescence des accidents de la route impliquant des personnes âgées, les autorités japonaises
+            incitent les plus de 75 ans à restituer leur permis de conduire.
+            \n\nDonnez-nous votre avis avec le #VieillirOuConduire !\n
+        </item>
+
+        <item>Le casque de vélo sera obligatoire pour les enfants de moins de 12 ans à partir de mars prochain !\n</item>
+
+
+    </string-array>
+</resources>

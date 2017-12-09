@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_exercice_correction"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp"
+    tools:context="com.polytech.nuitdelinfo.iiioexception.com.polytech.nuitinfo.ExerciceCorrection"
+    android:orientation="vertical">
+
+    <ImageView
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        android:id="@+id/imageView7"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:text="Correction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:fontFamily="cursive"
+        android:textColor="#000000"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        app:srcCompat="@android:color/holo_red_light"
+        android:id="@+id/imageView9"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:text="Note : 10/10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/note"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:fontFamily="cursive"
+        android:textColor="#000000"
+        android:textAlignment="textEnd"
+        android:paddingEnd="25dp"
+        android:paddingRight="25dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="end" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        app:srcCompat="@android:color/background_dark"
+        android:id="@+id/imageView4"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/corrections"
+        android:dividerHeight="5dp"
+        android:divider="@android:color/background_dark"
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true"
+        android:background="#d6d7d7"
+        />
+
+
+</LinearLayout>
