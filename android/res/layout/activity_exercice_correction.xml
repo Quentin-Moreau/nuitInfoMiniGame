@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="10dp"
-    tools:context="com.polytech.nuitdelinfo.iiioexception.com.polytech.nuitinfo.ExerciceCorrection"
+    tools:context="com.polytech.nuitinfo.ExerciceCorrection"
     android:orientation="vertical">
 
     <ImageView

@@ -13,7 +13,7 @@ import android.widget.TextView;
  * Created by theos on 08/12/2017.
  */
 
-class Pop extends Activity{
+public class Pop extends Activity{
     private Button ok;
     private TextView tw;
     private ImageView image;
@@ -36,7 +36,7 @@ class Pop extends Activity{
         int width  = dm.widthPixels;
         int height  = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.5),(int) (height*0.8));
+        //getWindow().setLayout((int)(width*0.5),(int) (height*0.8));
 
         ok = findViewById(R.id.button);
         tw = findViewById(R.id.messagePopup);
@@ -44,7 +44,7 @@ class Pop extends Activity{
 
 
         if(score < 5){
-            tw.setText("Tu comptais vraiment prendre la voiture dans cette état là ?");
+            tw.setText("Tu comptais vraiment prendre la voiture dans cet état là ?");
             image.setImageResource(R.drawable.bourre);
         }else{
             tw.setText("Tu as réussi le test ! ");
@@ -53,8 +53,10 @@ class Pop extends Activity{
 
         ok.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                finish();
+                /*
                 Intent intent = new Intent(Pop.this, Accueil.class);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.polytech.nuitdelinfo.iiioexception.com.polytech.nuitinfo.Calendar">
+    tools:context="com.polytech.nuitinfo.Calendar">
 
     <TextView
         android:id="@+id/Titre"
@@ -499,7 +499,9 @@
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Titre" />
+        app:layout_constraintTop_toBottomOf="@+id/Titre"
+        android:layout_marginRight="164dp"
+        android:layout_marginLeft="162dp" />
 
     <Button
         android:id="@+id/back"

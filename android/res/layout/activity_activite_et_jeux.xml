@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.polytech.nuitdelinfo.iiioexception.com.polytech.nuitinfo.ActiviteEtJeux">
+    tools:context="com.polytech.nuitinfo.ActiviteEtJeux">
 
     <TextView
         android:id="@+id/textView10"
@@ -41,4 +41,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
         android:text="Le Bon Chemin" />
+
+    <ImageView
+        android:id="@+id/retour"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="13dp"
+        android:background="@android:color/darker_gray"
+        android:src="?attr/actionModeCloseDrawable" />
+
 </RelativeLayout>

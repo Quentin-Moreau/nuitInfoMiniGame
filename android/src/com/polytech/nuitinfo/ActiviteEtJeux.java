@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class ActiviteEtJeux extends AppCompatActivity {
 
@@ -42,6 +43,16 @@ public class ActiviteEtJeux extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActiviteEtJeux.this,AndroidLauncher.class); //TODO : chemin quentin
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        ImageView retour = (ImageView)findViewById(R.id.retour);
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActiviteEtJeux.this,Accueil.class);
                 startActivity(intent);
                 finish();
             }

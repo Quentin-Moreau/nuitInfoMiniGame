@@ -49,6 +49,7 @@ public class LabbyGame extends Activity {
                 Intent intent = new Intent(LabbyGame.this,Pop.class);
                 intent.putExtra("score",scoreInt);
                 startActivity(intent);
+                finish();
             }
         }.start();
 
